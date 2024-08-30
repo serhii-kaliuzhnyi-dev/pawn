@@ -6,8 +6,7 @@ import {
 } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { navigationItems, navigationItems2 } from './constants';
-import DesktopLeftSideBar from './DesktopLeftSideBar';
+import { TABS } from './constants';
 import { Tab } from './types';
 import { APP_ROUTES } from '../../constants/appRoutes';
 
@@ -16,19 +15,19 @@ type Props = {
 };
 
 const BasicLayout = ({ children }: Props) => {
-  const [subNavOpenIds, setSubNavOpenIds] = useState(new Set());
+  const [subTabOpenIds, setSubNavOpenIds] = useState(new Set());
 
   const location = useLocation();
   const navigateToPage = useNavigate();
 
   const handleClickLogoIcon = () => navigateToPage(APP_ROUTES.OVERVIEW);
   const findActiveNavigationTab = useCallback(
-    (navigationItems: Tab[], parentItem?: number) => {
+    (tabs: Tab[], parentItem?: number) => {
       let newSelectedNavItem: number | null = null;
 
       const currentRoute = location.pathname;
 
-      navigationItems.forEach((item: Tab) => {
+      tabs.forEach((item: Tab) => {
         const isCurrentRouteSelected = currentRoute === item.link;
 
         if (isCurrentRouteSelected) {
@@ -36,40 +35,39 @@ const BasicLayout = ({ children }: Props) => {
 
           return;
         } else if (item.subTab) {
-          const activeNavigationTab = findActiveNavigationTab(
+          const activeTab = findActiveNavigationTab(
             item.subTab,
             item.id,
           );
 
-          if (activeNavigationTab) {
-            subNavOpenIds.add(item.id);
+          if (activeTab) {
+            subTabOpenIds.add(item.id);
 
             if (parentItem) {
-              subNavOpenIds.add(parentItem);
+              subTabOpenIds.add(parentItem);
             }
 
-            setSubNavOpenIds(subNavOpenIds);
+            setSubNavOpenIds(subTabOpenIds);
           }
         }
       });
 
       return newSelectedNavItem;
     },
-    [location.pathname, subNavOpenIds],
+    [location.pathname, subTabOpenIds],
   );
 
   const deleteSubNavOpenIdsItem = (id: number) => {
-    subNavOpenIds.delete(id);
-    setSubNavOpenIds(subNavOpenIds);
+    subTabOpenIds.delete(id);
+    setSubNavOpenIds(subTabOpenIds);
   };
   const addSubNavOpenIdsItem = (id: number) => {
-    subNavOpenIds.add(id);
-    setSubNavOpenIds(subNavOpenIds);
+    subTabOpenIds.add(id);
+    setSubNavOpenIds(subTabOpenIds);
   };
 
   useLayoutEffect(() => {
-    findActiveNavigationTab(navigationItems);
-    findActiveNavigationTab(navigationItems2);
+    findActiveNavigationTab(TABS);
   }, [findActiveNavigationTab]);
 
   return (
@@ -78,13 +76,6 @@ const BasicLayout = ({ children }: Props) => {
         <main className="lg:pl-64">
           <div className="px-4 sm:px-6 md:px-7 lg:px-8">{children}</div>
         </main>
-
-        <DesktopLeftSideBar
-          deleteSubNavOpenIdsItem={deleteSubNavOpenIdsItem}
-          addSubNavOpenIdsItem={addSubNavOpenIdsItem}
-          subNavOpenIds={subNavOpenIds}
-          handleClickLogoIcon={handleClickLogoIcon}
-        />
       </div>
     </>
   );

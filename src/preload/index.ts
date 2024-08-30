@@ -1,9 +1,15 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
+import { Tournament } from '../dto/types';
+
+
+type OpenFileDialogResult = string | null;
 
 // Custom APIs for renderer
-const api = {
-  openFileDialog: () => ipcRenderer.invoke('dialog:openFile')
+export const api = {
+  openFileDialog: (): Promise<OpenFileDialogResult> => ipcRenderer.invoke('dialog:openFile'),
+  getTournaments: (): Promise<Tournament[]> => ipcRenderer.invoke('get-tournaments'),
+  hello: 'world'
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to
