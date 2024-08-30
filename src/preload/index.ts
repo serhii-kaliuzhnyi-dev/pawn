@@ -1,9 +1,8 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
-import { Tournament } from '../dto/types';
+import { Tournament } from '../dto/types'
 
-
-type OpenFileDialogResult = string | null;
+type OpenFileDialogResult = string | null
 
 // Custom APIs for renderer
 export const api = {

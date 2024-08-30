@@ -1,74 +1,66 @@
-import {
-  ReactNode,
-  useCallback,
-  useLayoutEffect,
-  useState,
-} from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { ReactNode, useCallback, useLayoutEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import { TABS } from './constants';
-import { Tab } from './types';
-import { APP_ROUTES } from '../../constants/appRoutes';
+import { TABS } from './constants'
+import { Tab } from './types'
+import { APP_ROUTES } from '../../constants/appRoutes'
 
 type Props = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 const BasicLayout = ({ children }: Props) => {
-  const [subTabOpenIds, setSubNavOpenIds] = useState(new Set());
+  const [subTabOpenIds, setSubNavOpenIds] = useState(new Set())
 
-  const location = useLocation();
-  const navigateToPage = useNavigate();
+  const location = useLocation()
+  const navigateToPage = useNavigate()
 
-  const handleClickLogoIcon = () => navigateToPage(APP_ROUTES.OVERVIEW);
+  const handleClickLogoIcon = () => navigateToPage(APP_ROUTES.OVERVIEW)
   const findActiveNavigationTab = useCallback(
     (tabs: Tab[], parentItem?: number) => {
-      let newSelectedNavItem: number | null = null;
+      let newSelectedNavItem: number | null = null
 
-      const currentRoute = location.pathname;
+      const currentRoute = location.pathname
 
       tabs.forEach((item: Tab) => {
-        const isCurrentRouteSelected = currentRoute === item.link;
+        const isCurrentRouteSelected = currentRoute === item.link
 
         if (isCurrentRouteSelected) {
-          newSelectedNavItem = item.id;
+          newSelectedNavItem = item.id
 
-          return;
+          return
         } else if (item.subTab) {
-          const activeTab = findActiveNavigationTab(
-            item.subTab,
-            item.id,
-          );
+          const activeTab = findActiveNavigationTab(item.subTab, item.id)
 
           if (activeTab) {
-            subTabOpenIds.add(item.id);
+            subTabOpenIds.add(item.id)
 
             if (parentItem) {
-              subTabOpenIds.add(parentItem);
+              subTabOpenIds.add(parentItem)
             }
 
-            setSubNavOpenIds(subTabOpenIds);
+            setSubNavOpenIds(subTabOpenIds)
           }
         }
-      });
+      })
 
-      return newSelectedNavItem;
+      return newSelectedNavItem
     },
-    [location.pathname, subTabOpenIds],
-  );
+    [location.pathname, subTabOpenIds]
+  )
 
   const deleteSubNavOpenIdsItem = (id: number) => {
-    subTabOpenIds.delete(id);
-    setSubNavOpenIds(subTabOpenIds);
-  };
+    subTabOpenIds.delete(id)
+    setSubNavOpenIds(subTabOpenIds)
+  }
   const addSubNavOpenIdsItem = (id: number) => {
-    subTabOpenIds.add(id);
-    setSubNavOpenIds(subTabOpenIds);
-  };
+    subTabOpenIds.add(id)
+    setSubNavOpenIds(subTabOpenIds)
+  }
 
   useLayoutEffect(() => {
-    findActiveNavigationTab(TABS);
-  }, [findActiveNavigationTab]);
+    findActiveNavigationTab(TABS)
+  }, [findActiveNavigationTab])
 
   return (
     <>
@@ -78,7 +70,7 @@ const BasicLayout = ({ children }: Props) => {
         </main>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default BasicLayout;
+export default BasicLayout

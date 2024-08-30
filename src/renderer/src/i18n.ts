@@ -1,26 +1,23 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import LanguageDetector from 'i18next-browser-languagedetector'
+import HttpApi from 'i18next-http-backend';
 
 i18n
+  .use(HttpApi)
   .use(initReactI18next) // Passes i18n down to react-i18next
+  .use(LanguageDetector)
   .init({
-    resources: {
-      en: {
-        translation: {
-          "Welcome to React": "Welcome to React and react-i18next"
-        }
-      },
-      ua: {
-        translation: {
-          "Welcome to React": "Bienvenue à React et react-i18next"
-        }
-      },
-    },
-    lng: "ua", // Default language
-    fallbackLng: "en", // Fallback language
+    supportedLngs: ['en', 'ua', 'ru'],
+    lng: 'ua', // Default language
+    fallbackLng: 'en', // Fallback language
+    debug: true,
     interpolation: {
-      escapeValue: false, // React already protects against XSS
+      escapeValue: false // React already protects against XSS
     },
-  });
+    backend: {
+     loadPath: '/src/locales/{{lng}}/translation.json',
+    },
+  })
 
-export default i18n;
+export default i18n
