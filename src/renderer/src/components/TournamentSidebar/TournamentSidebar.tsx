@@ -1,26 +1,29 @@
-import { Box, Button, Paper, InputBase, List, Divider } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import { useTranslation } from 'react-i18next';
-import TournamentStatusButton from './TournamentStatusButton';
-import { Tournament, TournamentStatus } from '@dto/types';
-import { isDraftTournament, isFinishedTournament, isOngoingTournament } from '../../utils';
+import { Box, Button, Paper, InputBase, List, Divider } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
+import { useTranslation } from 'react-i18next'
+import TournamentStatusButton from './TournamentStatusButton'
+import { Tournament, TournamentStatus } from '@dto/types'
+import { isDraftTournament, isFinishedTournament, isOngoingTournament } from '../../utils'
+import { useNavigate } from 'react-router-dom'
+import { APP_ROUTES } from '../../constants/appRoutes'
 
 type TournamentSidebarProps = {
-  tournaments: Tournament[];
-  onFilterChange: (filter: TournamentStatus) => void;
-};
+  tournaments: Tournament[]
+  onFilterChange: (filter: TournamentStatus) => void
+}
 
 const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
+  const navigate = useNavigate();
 
   const handleNewTournament = () => {
-    console.log('New tournament clicked');
-  };
+    navigate(APP_ROUTES.NEW_TOURNAMENT);
+  }
 
   // Calculate the counts for each tournament status using utility functions
-  const currentTournamentsCount = tournaments.filter(isOngoingTournament).length;
-  const draftTournamentsCount = tournaments.filter(isDraftTournament).length;
-  const finishedTournamentsCount = tournaments.filter(isFinishedTournament).length;
+  const currentTournamentsCount = tournaments.filter(isOngoingTournament).length
+  const draftTournamentsCount = tournaments.filter(isDraftTournament).length
+  const finishedTournamentsCount = tournaments.filter(isFinishedTournament).length
 
   return (
     <Paper elevation={3} sx={{ width: '100%', padding: 2 }}>
@@ -30,7 +33,7 @@ const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarPro
           color="primary"
           startIcon={<AddIcon />}
           onClick={handleNewTournament}
-          sx={{ width: '100%', backgroundColor: '#3A3D91' }}
+          sx={{ width: '100%', backgroundColor: '#3A3D91', textTransform: 'none' }}
         >
           {t('newTournament')}
         </Button>
@@ -42,10 +45,10 @@ const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarPro
           onClick={() => onFilterChange('current')}
         />
         <Divider />
-        <TournamentStatusButton 
-          label={t('draftTournaments')}           
+        <TournamentStatusButton
+          label={t('draftTournaments')}
           count={draftTournamentsCount}
-          onClick={() => onFilterChange('draft')} 
+          onClick={() => onFilterChange('draft')}
         />
         <Divider />
         <TournamentStatusButton
@@ -66,7 +69,7 @@ const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarPro
         />
       </Box>
     </Paper>
-  );
-};
+  )
+}
 
-export default TournamentSidebar;
+export default TournamentSidebar

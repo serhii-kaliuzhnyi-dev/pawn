@@ -3,5 +3,14 @@
   "currentTournaments": "Поточні",
   "draftTournaments": "Чернетки",
   "finishedTournaments": "Завершені",
-  "search": "Пошук..."
+  "search": "Пошук...",
+  "name": "Назва",
+  "name_cant_be_empty": "Назва не може бути пустою",
+  "city": "Місто",
+  "country": "Країна",
+  "start_date": "Дата початку",
+  "end_date": "Дата закінчення",
+  "continue": "Продовжити",
+  "cancel": "Відмінити",
+  "importTournaments": "Імпортувати з файлу"
 }

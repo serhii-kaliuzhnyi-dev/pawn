@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
-import { Box, Container } from '@mui/material';
-import Header from '../Header';
+import { ReactNode } from 'react'
+import { Box, Container } from '@mui/material'
+import Header from '../Header'
 
 type BaseLayoutProps = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
@@ -12,7 +12,7 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
       <Header />
       <Container sx={{ marginTop: 12 }}>{children}</Container>
     </Box>
-  );
-};
+  )
+}
 
-export default BaseLayout;
+export default BaseLayout

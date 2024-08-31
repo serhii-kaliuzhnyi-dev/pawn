@@ -1,5 +1,5 @@
-import { Box, Typography } from "@mui/material"
-import { StatusButton } from "./styled"
+import { Box, Typography } from '@mui/material'
+import { StatusButton } from './styled'
 
 type TournamentStatusProps = {
   label: string
@@ -16,4 +16,4 @@ const TournamentStatusButton = ({ label, count, onClick }: TournamentStatusProps
   </StatusButton>
 )
 
-export default TournamentStatusButton;
+export default TournamentStatusButton

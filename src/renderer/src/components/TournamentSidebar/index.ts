@@ -1,1 +1,1 @@
-export { default } from './TournamentSidebar';
+export { default } from './TournamentSidebar'

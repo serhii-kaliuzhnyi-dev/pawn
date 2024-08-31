@@ -4,6 +4,8 @@ import '@fontsource/roboto'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './tournament/store'
@@ -22,16 +24,16 @@ const root = createRoot(container)
 
 root.render(
   <StrictMode>
-            <ThemeProvider theme={muiTheme}>
-
-    <Provider store={store}>
-      <BrowserRouter>
+    <ThemeProvider theme={muiTheme}>
+      <Provider store={store}>
+        <BrowserRouter>
           <I18nextProvider i18n={i18n}>
-            <App />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <App />
+            </LocalizationProvider>
           </I18nextProvider>
-      </BrowserRouter>
-    </Provider>
-            </ThemeProvider>
-
+        </BrowserRouter>
+      </Provider>
+    </ThemeProvider>
   </StrictMode>
 )

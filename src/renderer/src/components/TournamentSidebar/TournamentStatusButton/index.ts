@@ -1,1 +1,1 @@
-export { default } from './TournamentStatus';
+export { default } from './TournamentStatus'

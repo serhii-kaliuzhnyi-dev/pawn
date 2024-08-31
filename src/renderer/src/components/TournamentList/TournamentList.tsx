@@ -1,10 +1,10 @@
-import { Box } from '@mui/material';
-import TournamentListItem from './TournamentListItem';
-import { Tournament } from '@dto/types';
+import { Box } from '@mui/material'
+import TournamentListItem from './TournamentListItem'
+import { Tournament } from '@dto/types'
 
 type TournamentListProps = {
-  tournaments: Tournament[];
-};
+  tournaments: Tournament[]
+}
 
 const TournamentList = ({ tournaments }: TournamentListProps) => {
   return (
@@ -13,7 +13,7 @@ const TournamentList = ({ tournaments }: TournamentListProps) => {
         <TournamentListItem key={tournament.id} tournament={tournament} />
       ))}
     </Box>
-  );
-};
+  )
+}
 
-export default TournamentList;
+export default TournamentList

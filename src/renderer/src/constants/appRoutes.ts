@@ -1,3 +1,4 @@
 export const APP_ROUTES = {
-  TOURNAMENTS: '/tournaments'
+  TOURNAMENTS: '/tournaments',
+  NEW_TOURNAMENT: '/tournaments/new'
 }

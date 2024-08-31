@@ -1,15 +1,15 @@
-import { Box, Typography, Tooltip } from '@mui/material';
-import EventIcon from '@mui/icons-material/Event';
-import GroupIcon from '@mui/icons-material/Group';
-import TimerIcon from '@mui/icons-material/Timer';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import FlagIcon from '@mui/icons-material/Flag';
-import { DetailsBox, InfoBox, LocationBox, StyledPaper } from './styled';
-import { Tournament } from '@dto/types';
+import { Box, Typography, Tooltip } from '@mui/material'
+import EventIcon from '@mui/icons-material/Event'
+import GroupIcon from '@mui/icons-material/Group'
+import TimerIcon from '@mui/icons-material/Timer'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import FlagIcon from '@mui/icons-material/Flag'
+import { DetailsBox, InfoBox, LocationBox, StyledPaper } from './styled'
+import { Tournament } from '@dto/types'
 
 type TournamentListItemProps = {
-  tournament: Tournament;
-};
+  tournament: Tournament
+}
 
 const TournamentListItem = ({ tournament }: TournamentListItemProps) => {
   return (
@@ -42,7 +42,7 @@ const TournamentListItem = ({ tournament }: TournamentListItemProps) => {
         </Tooltip>
       </LocationBox>
     </StyledPaper>
-  );
-};
+  )
+}
 
-export default TournamentListItem;
+export default TournamentListItem

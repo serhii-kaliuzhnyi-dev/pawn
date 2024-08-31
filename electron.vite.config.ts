@@ -16,10 +16,8 @@ export default defineConfig({
       }
     },
     optimizeDeps: {
-   include: [
-     "@mui/material/Box",
-   ],
-},
+      include: ['@mui/material/Box']
+    },
     plugins: [react()]
   }
 })

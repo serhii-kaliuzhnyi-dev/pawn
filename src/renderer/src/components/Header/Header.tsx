@@ -1,4 +1,5 @@
-import { AppBar, Toolbar, Typography, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box } from '@mui/material'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -6,12 +7,14 @@ const Header = () => {
       <Toolbar>
         <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
           <Typography variant="h6" component="div" sx={{ marginLeft: 1 }}>
-            Pawn
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              Pawn
+            </Link>
           </Typography>
         </Box>
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
