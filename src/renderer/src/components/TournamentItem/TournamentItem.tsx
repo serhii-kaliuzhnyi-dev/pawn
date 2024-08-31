@@ -24,7 +24,7 @@ const TournamentItem = ({ date, count, status, ratio, location }) => {
           id="panel-header"
         >
            <Typography variant="h6">
-            Tournament name
+            Tournament name 132132
           </Typography>
           <Box 
             sx={{ 
