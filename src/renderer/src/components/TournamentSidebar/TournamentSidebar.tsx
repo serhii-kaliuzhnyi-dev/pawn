@@ -1,41 +1,26 @@
-import { Box, Button, Paper, Typography, InputBase, List, Divider } from '@mui/material'
-import AddIcon from '@mui/icons-material/Add'
-import { TournamentStatusButton } from './styled'
-import { useTranslation } from 'react-i18next'
+import { Box, Button, Paper, InputBase, List, Divider } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import { useTranslation } from 'react-i18next';
+import TournamentStatusButton from './TournamentStatusButton';
+import { Tournament, TournamentStatus } from '@dto/types';
+import { isDraftTournament, isFinishedTournament, isOngoingTournament } from '../../utils';
 
-type TournamentStatusProps = {
-  label: string
-  count: number
-  onClick: () => void
-}
+type TournamentSidebarProps = {
+  tournaments: Tournament[];
+  onFilterChange: (filter: TournamentStatus) => void;
+};
 
-const TournamentStatus = ({ label, count, onClick }: TournamentStatusProps) => (
-  <TournamentStatusButton onClick={onClick} fullWidth>
-    <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-      <Typography variant="body1">{label}</Typography>
-      <Typography variant="body2">{count}</Typography>
-    </Box>
-  </TournamentStatusButton>
-)
-
-const TournamentSidebar = () => {
-  const { t } = useTranslation()
+const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarProps) => {
+  const { t } = useTranslation();
 
   const handleNewTournament = () => {
-    console.log('New tournament clicked')
-  }
+    console.log('New tournament clicked');
+  };
 
-  const showCurrentTournaments = () => {
-    console.log('Current tournaments clicked')
-  }
-
-  const showDraftTournaments = () => {
-    console.log('Draft tournaments clicked')
-  }
-
-  const showFinishedTournaments = () => {
-    console.log('Finished tournaments clicked')
-  }
+  // Calculate the counts for each tournament status using utility functions
+  const currentTournamentsCount = tournaments.filter(isOngoingTournament).length;
+  const draftTournamentsCount = tournaments.filter(isDraftTournament).length;
+  const finishedTournamentsCount = tournaments.filter(isFinishedTournament).length;
 
   return (
     <Paper elevation={3} sx={{ width: 250, padding: 2 }}>
@@ -51,18 +36,22 @@ const TournamentSidebar = () => {
         </Button>
       </Box>
       <List disablePadding>
-        <TournamentStatus
+        <TournamentStatusButton
           label={t('currentTournaments')}
-          count={1}
-          onClick={showCurrentTournaments}
+          count={currentTournamentsCount}
+          onClick={() => onFilterChange('current')}
         />
         <Divider />
-        <TournamentStatus label={t('draftTournaments')} count={0} onClick={showDraftTournaments} />
+        <TournamentStatusButton 
+          label={t('draftTournaments')}           
+          count={draftTournamentsCount}
+          onClick={() => onFilterChange('draft')} 
+        />
         <Divider />
-        <TournamentStatus
+        <TournamentStatusButton
           label={t('finishedTournaments')}
-          count={2}
-          onClick={showFinishedTournaments}
+          count={finishedTournamentsCount}
+          onClick={() => onFilterChange('finished')}
         />
       </List>
       <Box sx={{ mt: 2 }}>
@@ -77,7 +66,7 @@ const TournamentSidebar = () => {
         />
       </Box>
     </Paper>
-  )
-}
+  );
+};
 
-export default TournamentSidebar
+export default TournamentSidebar;

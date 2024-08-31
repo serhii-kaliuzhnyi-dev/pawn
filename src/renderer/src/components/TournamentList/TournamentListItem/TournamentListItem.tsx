@@ -5,48 +5,38 @@ import TimerIcon from '@mui/icons-material/Timer';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import FlagIcon from '@mui/icons-material/Flag';
 import { DetailsBox, InfoBox, LocationBox, StyledPaper } from './styled';
-
-type TournamentInfo = {
-  name: string;
-  location: string;
-  date: string;
-  timeType: string;
-  playerCount: number;
-  roundsPlayed: number;
-  totalRounds: number;
-  countryCode: string;
-};
+import { Tournament } from '@dto/types';
 
 type TournamentListItemProps = {
-  tournamentInfo: TournamentInfo;
+  tournament: Tournament;
 };
 
-const TournamentListItem = ({ tournamentInfo }: TournamentListItemProps) => {
+const TournamentListItem = ({ tournament }: TournamentListItemProps) => {
   return (
     <StyledPaper>
       <InfoBox>
         <Typography variant="h6" gutterBottom>
-          {tournamentInfo.name}
+          {tournament.name}
         </Typography>
         <DetailsBox>
           <EventIcon fontSize="small" />
-          <Typography variant="body2">{tournamentInfo.date}</Typography>
+          <Typography variant="body2">{tournament.date}</Typography>
           <GroupIcon fontSize="small" />
-          <Typography variant="body2">{tournamentInfo.playerCount} players</Typography>
+          <Typography variant="body2">{tournament.playerCount} players</Typography>
           <TimerIcon fontSize="small" />
-          <Typography variant="body2">{tournamentInfo.timeType}</Typography>
+          <Typography variant="body2">{tournament.timeType}</Typography>
           <PlayArrowIcon fontSize="small" />
           <Typography variant="body2">
-            {tournamentInfo.roundsPlayed}/{tournamentInfo.totalRounds} rounds
+            {tournament.roundsPlayed}/{tournament.totalRounds} rounds
           </Typography>
         </DetailsBox>
       </InfoBox>
       <LocationBox>
-        <Tooltip title={tournamentInfo.location}>
+        <Tooltip title={tournament.location}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <FlagIcon sx={{ color: '#0057B7' }} />
             <Typography variant="body2" sx={{ marginLeft: 0.5 }}>
-              {tournamentInfo.location}
+              {tournament.location}
             </Typography>
           </Box>
         </Tooltip>

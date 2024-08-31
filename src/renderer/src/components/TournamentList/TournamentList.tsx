@@ -1,44 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { Tournament } from '@dto/types'
+import { Box } from '@mui/material';
+import TournamentListItem from './TournamentListItem';
+import { Tournament } from '@dto/types';
 
-const TournamentsList: React.FC = () => {
-  const [tournaments, setTournaments] = useState<Tournament[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+type TournamentListProps = {
+  tournaments: Tournament[];
+};
 
-  const fetchTournaments = async () => {
-    setIsLoading(true)
-    try {
-      // Use the API exposed via contextBridge
-      const tournaments: Tournament[] = await window.api.getTournaments()
-      setTournaments(tournaments)
-    } catch (error) {
-      console.error('Failed to fetch tournaments:', error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  useEffect(() => {
-    fetchTournaments()
-  }, [])
-
+const TournamentList = ({ tournaments }: TournamentListProps) => {
   return (
-    <div>
-      <h1>Tournaments List</h1>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {tournaments.map((tournament) => (
-            <li key={tournament.id}>
-              <strong>{tournament.name}</strong> - {tournament.location} on {tournament.date}
-            </li>
-          ))}
-        </ul>
-      )}
-      <button onClick={fetchTournaments}>Refresh Tournaments</button>
-    </div>
-  )
-}
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      {tournaments.map((tournament) => (
+        <TournamentListItem key={tournament.id} tournament={tournament} />
+      ))}
+    </Box>
+  );
+};
 
-export default TournamentsList
+export default TournamentList;

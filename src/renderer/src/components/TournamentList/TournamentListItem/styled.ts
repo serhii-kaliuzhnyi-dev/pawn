@@ -8,7 +8,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
   transition: 'transform 0.2s ease-in-out',
   cursor: 'pointer',
   '&:hover': {
-    transform: 'scale(1.02)',
+    transform: 'scale(1.01)',
   },
 }));
 
