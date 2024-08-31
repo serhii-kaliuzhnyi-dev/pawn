@@ -15,6 +15,11 @@ export default defineConfig({
         '@renderer': resolve('src/renderer/src')
       }
     },
+    optimizeDeps: {
+   include: [
+     "@mui/material/Box",
+   ],
+},
     plugins: [react()]
   }
 })

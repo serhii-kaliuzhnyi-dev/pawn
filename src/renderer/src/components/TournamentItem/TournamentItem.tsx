@@ -1,80 +1,58 @@
-import { useState } from 'react';
-import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import { Box, Typography, Tooltip } from '@mui/material';
+import EventIcon from '@mui/icons-material/Event';
 import GroupIcon from '@mui/icons-material/Group';
-import LoopIcon from '@mui/icons-material/Loop';
-import GrainIcon from '@mui/icons-material/Grain';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { StyledSection, FlexContainer, IconTextBox } from './styled';
+import TimerIcon from '@mui/icons-material/Timer';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import FlagIcon from '@mui/icons-material/Flag';
+import { DetailsBox, InfoBox, LocationBox, StyledPaper } from './styled';
 
-const TournamentItem = ({ date, count, status, ratio, location }) => {
-  const [expanded, setExpanded] = useState(false);
+type TournamentInfo = {
+  name: string;
+  location: string;
+  date: string;
+  timeType: string;
+  playerCount: number;
+  roundsPlayed: number;
+  totalRounds: number;
+  countryCode: string;
+};
 
-  const handleChange = () => {
-    setExpanded(!expanded);
-  };
+type TournamentListItemProps = {
+  tournamentInfo: TournamentInfo;
+};
 
+const TournamentListItem = ({ tournamentInfo }: TournamentListItemProps) => {
   return (
-    <StyledSection component="section">
-      <Accordion expanded={expanded} onChange={handleChange}>
-        <AccordionSummary
-          expandIcon={null}
-          aria-controls="panel-content"
-          id="panel-header"
-        >
-           <Typography variant="h6">
-            Tournament name 13213242343
+    <StyledPaper>
+      <InfoBox>
+        <Typography variant="h6" gutterBottom>
+          {tournamentInfo.name}
+        </Typography>
+        <DetailsBox>
+          <EventIcon fontSize="small" />
+          <Typography variant="body2">{tournamentInfo.date}</Typography>
+          <GroupIcon fontSize="small" />
+          <Typography variant="body2">{tournamentInfo.playerCount} players</Typography>
+          <TimerIcon fontSize="small" />
+          <Typography variant="body2">{tournamentInfo.timeType}</Typography>
+          <PlayArrowIcon fontSize="small" />
+          <Typography variant="body2">
+            {tournamentInfo.roundsPlayed}/{tournamentInfo.totalRounds} rounds
           </Typography>
-          <Box 
-            sx={{ 
-              display: 'flex', 
-              justifyContent: 'space-between', 
-              alignItems: 'center', 
-              width: '100%',
-              mt: 1 
-            }}
-          >
-            <Box 
-              sx={{ 
-                display: 'flex', 
-                gap: 2 
-              }}
-            >
-              {[
-                { Icon: AppRegistrationIcon, text: date },
-                { Icon: GroupIcon, text: count },
-                { Icon: LoopIcon, text: status },
-                { Icon: GrainIcon, text: ratio }
-              ].map(({ Icon, text }, index) => (
-                <IconTextBox key={index}>
-                  <Icon />
-                  <Typography variant="body1">{text}</Typography>
-                </IconTextBox>
-              ))}
-            </Box>
-            <Box 
-              sx={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: 1 
-              }}
-            >
-              <LocationOnIcon />
-              <Typography variant="body1">{location}</Typography>
-            </Box> 
-          </Box>
-        </AccordionSummary>
-        <AccordionDetails>
-          <FlexContainer>
-            <Typography>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ab magni totam maiores ipsum mollitia ullam! In quaerat fuga aliquam?
+        </DetailsBox>
+      </InfoBox>
+      <LocationBox>
+        <Tooltip title={tournamentInfo.location}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <FlagIcon sx={{ color: '#0057B7' }} />
+            <Typography variant="body2" sx={{ marginLeft: 0.5 }}>
+              {tournamentInfo.location}
             </Typography>
-          </FlexContainer>
-        </AccordionDetails>
-      </Accordion>
-    </StyledSection>
+          </Box>
+        </Tooltip>
+      </LocationBox>
+    </StyledPaper>
   );
 };
 
-export default TournamentItem;
+export default TournamentListItem;

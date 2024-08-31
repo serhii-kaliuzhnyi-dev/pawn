@@ -22,14 +22,16 @@ const root = createRoot(container)
 
 root.render(
   <StrictMode>
+            <ThemeProvider theme={muiTheme}>
+
     <Provider store={store}>
       <BrowserRouter>
-        <ThemeProvider theme={muiTheme}>
           <I18nextProvider i18n={i18n}>
             <App />
           </I18nextProvider>
-        </ThemeProvider>
       </BrowserRouter>
     </Provider>
+            </ThemeProvider>
+
   </StrictMode>
 )
