@@ -1,10 +1,11 @@
-import { Grid, Box } from '@mui/material';
+import { useEffect, useState } from 'react';
+import Grid from '@mui/material/Grid2';
 import BaseLayout from '../../components/BaseLayout/BaseLayout';
 import TournamentSidebar from '../../components/TournamentSidebar/TournamentSidebar';
 import TournamentList from '../../components/TournamentList/TournamentList';
-import { useEffect, useState } from 'react';
 import { Tournament, TournamentStatus } from '@dto/types';
 import { isDraftTournament, isFinishedTournament, isOngoingTournament } from '../../utils';
+import { ContainerBox, ContentGrid, SidebarGrid } from './styled';
 
 const TournamentsPage = () => {
   const [tournaments, setTournaments] = useState<Tournament[]>([]);
@@ -15,7 +16,6 @@ const TournamentsPage = () => {
     const fetchTournaments = async () => {
       const data = await window.api.getTournaments();
       setTournaments(data);
-       // Initially show current tournaments
       setFilteredTournaments(data.filter(isOngoingTournament));
     };
 
@@ -47,19 +47,19 @@ const TournamentsPage = () => {
 
   return (
     <BaseLayout>
-      <Box sx={{ flexGrow: 1 }}>
+      <ContainerBox>
         <Grid container spacing={2}>
-          <Grid item xs={3}>
+          <SidebarGrid size={{mobile: 12, laptop: 3, desktop: 3 }}>
             <TournamentSidebar
               tournaments={tournaments}
               onFilterChange={handleFilterChange}
             />
-          </Grid>
-          <Grid item xs={9}>
+          </SidebarGrid>
+          <ContentGrid size={{ mobile: 12, laptop: 9, desktop: 9 }}>
             <TournamentList tournaments={filteredTournaments} />
-          </Grid>
+          </ContentGrid>
         </Grid>
-      </Box>
+      </ContainerBox>
     </BaseLayout>
   );
 };

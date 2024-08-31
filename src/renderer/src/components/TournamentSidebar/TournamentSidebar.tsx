@@ -23,7 +23,7 @@ const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarPro
   const finishedTournamentsCount = tournaments.filter(isFinishedTournament).length;
 
   return (
-    <Paper elevation={3} sx={{ width: 250, padding: 2 }}>
+    <Paper elevation={3} sx={{ width: '100%', padding: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
         <Button
           variant="contained"
