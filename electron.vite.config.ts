@@ -16,8 +16,20 @@ export default defineConfig({
       }
     },
     optimizeDeps: {
-      include: ['@mui/material/Box']
+      include: [
+        '@emotion/react', 
+        '@emotion/styled', 
+        '@mui/material'
+      ],   
+      force: true 
     },
-    plugins: [react()]
+    plugins: [react(
+      {
+        jsxImportSource: '@emotion/react',
+        babel: {
+          plugins: ['@emotion/babel-plugin'],
+        },
+      }
+    )]
   }
 })
