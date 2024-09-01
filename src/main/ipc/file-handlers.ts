@@ -4,7 +4,7 @@ const registerFileHandlers = () => {
   ipcMain.handle('dialog:openFile', async () => {
     const result = await dialog.showOpenDialog({
       properties: ['openFile'],
-      filters: [{ name: 'Pawn tournaments', extensions: ['pawn'] }]
+      filters: [{ name: 'Pawn tournaments', extensions: ['pawn'] }],
     });
 
     return result.canceled ? null : result.filePaths[0];

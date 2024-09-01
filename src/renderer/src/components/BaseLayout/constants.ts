@@ -9,7 +9,7 @@ const assignIds = (tabs: Omit<Tab, 'id'>[], parentId: string = ''): Tab[] => {
     return {
       ...tab,
       id: parseFloat(id),
-      subTab: tab.subTab ? assignIds(tab.subTab, id) : undefined
+      subTab: tab.subTab ? assignIds(tab.subTab, id) : undefined,
     };
   });
 };
@@ -18,13 +18,13 @@ const tabs = [
   {
     id: 1,
     name: PAGE_TITLES.OVERVIEW,
-    link: APP_ROUTES.TOURNAMENTS
+    link: APP_ROUTES.TOURNAMENTS,
   },
   {
     id: 2,
     name: PAGE_TITLES.TOURNAMENT_SETTINGS,
-    link: APP_ROUTES.TOURNAMENTS
-  }
+    link: APP_ROUTES.TOURNAMENTS,
+  },
 ];
 
 export const TABS: Tab[] = assignIds(tabs);

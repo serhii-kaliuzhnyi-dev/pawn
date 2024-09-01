@@ -7,9 +7,11 @@ type OpenFileDialogResult = string | null;
 
 // Custom APIs for renderer
 export const api = {
-  openFileDialog: (): Promise<OpenFileDialogResult> => ipcRenderer.invoke('dialog:openFile'),
-  getTournaments: (): Promise<Tournament[]> => ipcRenderer.invoke('get-tournaments'),
-  hello: 'world'
+  openFileDialog: (): Promise<OpenFileDialogResult> =>
+    ipcRenderer.invoke('dialog:openFile'),
+  getTournaments: (): Promise<Tournament[]> =>
+    ipcRenderer.invoke('get-tournaments'),
+  hello: 'world',
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to

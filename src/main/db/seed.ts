@@ -1,7 +1,9 @@
 import db from './';
 
 export const seedDatabase = () => {
-  const count = db.prepare('SELECT COUNT(*) AS count FROM tournaments').get().count;
+  const count = db
+    .prepare('SELECT COUNT(*) AS count FROM tournaments')
+    .get().count;
 
   if (count === 0) {
     const insert = db.prepare(`
@@ -18,7 +20,7 @@ export const seedDatabase = () => {
         playerCount: 45,
         roundsPlayed: 2,
         totalRounds: 9,
-        countryCode: 'UA'
+        countryCode: 'UA',
       },
       {
         name: 'International Grandmasters Tournament',
@@ -28,7 +30,7 @@ export const seedDatabase = () => {
         playerCount: 60,
         roundsPlayed: 5,
         totalRounds: 11,
-        countryCode: 'UA'
+        countryCode: 'UA',
       },
       {
         name: 'European Chess Championship',
@@ -38,8 +40,8 @@ export const seedDatabase = () => {
         playerCount: 30,
         roundsPlayed: 7,
         totalRounds: 7,
-        countryCode: 'UA'
-      }
+        countryCode: 'UA',
+      },
     ];
 
     tournaments.forEach((tournament) => {
@@ -51,7 +53,7 @@ export const seedDatabase = () => {
         tournament.playerCount,
         tournament.roundsPlayed,
         tournament.totalRounds,
-        tournament.countryCode
+        tournament.countryCode,
       );
     });
 

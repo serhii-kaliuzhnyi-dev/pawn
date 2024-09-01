@@ -6,9 +6,9 @@ export const muiTheme = createTheme({
       laptop: 1024,
       tablet: 640,
       mobile: 0,
-      desktop: 1280
-    }
-  }
+      desktop: 1280,
+    },
+  },
 });
 
 declare module '@mui/system' {

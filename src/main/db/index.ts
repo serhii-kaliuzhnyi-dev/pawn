@@ -3,7 +3,11 @@ import { app } from 'electron';
 import { existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 
-const dbFilePath = join(app.getPath('userData'), 'tournaments', 'tournaments.db');
+const dbFilePath = join(
+  app.getPath('userData'),
+  'tournaments',
+  'tournaments.db',
+);
 
 // Ensure the tournaments folder exists
 const tournamentsDir = join(app.getPath('userData'), 'tournaments');

@@ -18,7 +18,7 @@ const initialState: TournamentState = {
   place: '',
   players: [],
   currentTour: 0,
-  referee: ''
+  referee: '',
 };
 
 const tournamentSlice = createSlice({
@@ -39,9 +39,10 @@ const tournamentSlice = createSlice({
     },
     setReferee(state, action: PayloadAction<string>) {
       state.referee = action.payload;
-    }
-  }
+    },
+  },
 });
 
-export const { setName, setPlace, addPlayer, setCurrentTour, setReferee } = tournamentSlice.actions;
+export const { setName, setPlace, addPlayer, setCurrentTour, setReferee } =
+  tournamentSlice.actions;
 export default tournamentSlice.reducer;

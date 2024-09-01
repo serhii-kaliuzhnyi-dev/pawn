@@ -9,7 +9,7 @@ export function createAppMenu() {
           label: 'New Tournament',
           click: () => {
             // Add your custom logic for creating a new tournament
-          }
+          },
         },
         {
           label: 'Open',
@@ -17,7 +17,7 @@ export function createAppMenu() {
             if (browserWindow) {
               const result = await dialog.showOpenDialog(browserWindow, {
                 properties: ['openFile'],
-                filters: [{ name: 'Pawn tournaments', extensions: ['pawn'] }]
+                filters: [{ name: 'Pawn tournaments', extensions: ['pawn'] }],
               });
               if (!result.canceled && result.filePaths.length > 0) {
                 const filePath = result.filePaths[0];
@@ -25,11 +25,11 @@ export function createAppMenu() {
                 // Handle the opened file path
               }
             }
-          }
+          },
         },
         { type: 'separator' },
-        { label: 'Exit', role: 'quit' }
-      ]
+        { label: 'Exit', role: 'quit' },
+      ],
     },
     {
       label: 'Edit',
@@ -39,8 +39,8 @@ export function createAppMenu() {
         { type: 'separator' },
         { label: 'Cut', role: 'cut' },
         { label: 'Copy', role: 'copy' },
-        { label: 'Paste', role: 'paste' }
-      ]
+        { label: 'Paste', role: 'paste' },
+      ],
     },
     {
       label: 'View',
@@ -50,8 +50,8 @@ export function createAppMenu() {
         { type: 'separator' },
         { label: 'Reset Zoom', role: 'resetZoom' }, // Correct role name
         { label: 'Zoom In', role: 'zoomIn' }, // Correct role name
-        { label: 'Zoom Out', role: 'zoomOut' } // Correct role name
-      ]
+        { label: 'Zoom Out', role: 'zoomOut' }, // Correct role name
+      ],
     },
     {
       label: 'Help',
@@ -60,10 +60,10 @@ export function createAppMenu() {
           label: 'Learn More',
           click: () => {
             shell.openExternal('https://your.documentation.link');
-          }
-        }
-      ]
-    }
+          },
+        },
+      ],
+    },
   ];
 
   const menu = Menu.buildFromTemplate(menuTemplate);

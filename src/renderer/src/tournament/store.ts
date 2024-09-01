@@ -4,8 +4,8 @@ import tournamentReducer from './tournamentSlice';
 
 const store = configureStore({
   reducer: {
-    tournament: tournamentReducer
-  }
+    tournament: tournamentReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

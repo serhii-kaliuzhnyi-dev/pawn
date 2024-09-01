@@ -5,6 +5,6 @@ export const StatusButton = styled(Button)(({ theme }) => ({
   color: theme.palette.text.primary,
   padding: '10px 16px',
   '&:hover': {
-    backgroundColor: theme.palette.action.hover
-  }
+    backgroundColor: theme.palette.action.hover,
+  },
 }));

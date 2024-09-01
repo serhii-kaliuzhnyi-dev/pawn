@@ -5,7 +5,10 @@ export const isFinishedTournament = (tournament: Tournament): boolean => {
 };
 
 export const isOngoingTournament = (tournament: Tournament): boolean => {
-  return tournament.roundsPlayed > 0 && tournament.roundsPlayed < tournament.totalRounds;
+  return (
+    tournament.roundsPlayed > 0 &&
+    tournament.roundsPlayed < tournament.totalRounds
+  );
 };
 
 export const isDraftTournament = (tournament: Tournament): boolean => {

@@ -13,17 +13,19 @@ i18n
     fallbackLng: 'en', // Fallback language
     debug: true,
     interpolation: {
-      escapeValue: false // React already protects against XSS
+      escapeValue: false, // React already protects against XSS
     },
     backend: {
-      loadPath: '/src/locales/{{lng}}/translation.json'
+      loadPath: '/src/locales/{{lng}}/translation.json',
     },
     saveMissing: true,
     saveMissingTo: 'current',
     missingKeyHandler: (lngs, key, fallbackValue) => {
-      console.warn(`Missing translation for key: "${key}" in languages: ${lngs.join(', ')}`);
+      console.warn(
+        `Missing translation for key: "${key}" in languages: ${lngs.join(', ')}`,
+      );
       return fallbackValue || key; // Show key as fallback
-    }
+    },
   });
 
 export default i18n;

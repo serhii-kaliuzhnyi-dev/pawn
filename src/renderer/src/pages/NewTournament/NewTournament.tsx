@@ -15,7 +15,11 @@ const NewTournament = () => {
           </Grid>
           <Grid
             size={{ mobile: 12, laptop: 4, desktop: 4 }}
-            sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
           >
             <ImportTournamentsButton />
           </Grid>

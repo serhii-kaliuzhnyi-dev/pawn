@@ -5,7 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { APP_ROUTES } from '../../constants/appRoutes';
-import { isDraftTournament, isFinishedTournament, isOngoingTournament } from '../../utils';
+import {
+  isDraftTournament,
+  isFinishedTournament,
+  isOngoingTournament,
+} from '../../utils';
 import TournamentStatusButton from './TournamentStatusButton';
 
 type TournamentSidebarProps = {
@@ -13,7 +17,10 @@ type TournamentSidebarProps = {
   onFilterChange: (filter: TournamentStatus) => void;
 };
 
-const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarProps) => {
+const TournamentSidebar = ({
+  tournaments,
+  onFilterChange,
+}: TournamentSidebarProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -22,9 +29,11 @@ const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarPro
   };
 
   // Calculate the counts for each tournament status using utility functions
-  const currentTournamentsCount = tournaments.filter(isOngoingTournament).length;
+  const currentTournamentsCount =
+    tournaments.filter(isOngoingTournament).length;
   const draftTournamentsCount = tournaments.filter(isDraftTournament).length;
-  const finishedTournamentsCount = tournaments.filter(isFinishedTournament).length;
+  const finishedTournamentsCount =
+    tournaments.filter(isFinishedTournament).length;
 
   return (
     <Paper elevation={3} sx={{ width: '100%', padding: 2 }}>
@@ -34,7 +43,11 @@ const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarPro
           color="primary"
           startIcon={<AddIcon />}
           onClick={handleNewTournament}
-          sx={{ width: '100%', backgroundColor: '#3A3D91', textTransform: 'none' }}
+          sx={{
+            width: '100%',
+            backgroundColor: '#3A3D91',
+            textTransform: 'none',
+          }}
         >
           {t('newTournament')}
         </Button>
@@ -65,7 +78,7 @@ const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarPro
           sx={{
             padding: '4px 8px',
             border: '1px solid #ccc',
-            borderRadius: 4
+            borderRadius: 4,
           }}
         />
       </Box>

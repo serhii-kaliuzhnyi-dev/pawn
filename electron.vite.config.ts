@@ -4,28 +4,28 @@ import { resolve } from 'path';
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin()]
+    plugins: [externalizeDepsPlugin()],
   },
   preload: {
-    plugins: [externalizeDepsPlugin()]
+    plugins: [externalizeDepsPlugin()],
   },
   renderer: {
     resolve: {
       alias: {
-        '@renderer': resolve('src/renderer/src')
-      }
+        '@renderer': resolve('src/renderer/src'),
+      },
     },
     optimizeDeps: {
       include: ['@emotion/react', '@emotion/styled', '@mui/material'],
-      force: true
+      force: true,
     },
     plugins: [
       react({
         jsxImportSource: '@emotion/react',
         babel: {
-          plugins: ['@emotion/babel-plugin']
-        }
-      })
-    ]
-  }
+          plugins: ['@emotion/babel-plugin'],
+        },
+      }),
+    ],
+  },
 });
