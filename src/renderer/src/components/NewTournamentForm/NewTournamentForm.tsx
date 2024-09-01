@@ -7,10 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import CountryAutocomplete from '../CountryAutocomplete';
 import { ButtonContainer, StyledGrid } from './styled';
-import {
-  DEFAULT_TOURNAMENT_FORM_VALUES,
-  TOURNAMENT_FORM_SCHEMA,
-} from './validation';
+import { DEFAULT_TOURNAMENT_FORM_VALUES, TOURNAMENT_FORM_SCHEMA } from './validation';
 
 type TournamentFormValues = {
   name: string;
@@ -38,11 +35,7 @@ const TournamentForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{ padding: 3, maxWidth: '1200px' }}
-    >
+    <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ padding: 3, maxWidth: '1200px' }}>
       <Typography variant="h5" color="black" gutterBottom>
         {t('newTournament')}
       </Typography>

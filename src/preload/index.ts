@@ -7,10 +7,8 @@ type OpenFileDialogResult = string | null;
 
 // Custom APIs for renderer
 export const api = {
-  openFileDialog: (): Promise<OpenFileDialogResult> =>
-    ipcRenderer.invoke('dialog:openFile'),
-  getTournaments: (): Promise<Tournament[]> =>
-    ipcRenderer.invoke('get-tournaments'),
+  openFileDialog: (): Promise<OpenFileDialogResult> => ipcRenderer.invoke('dialog:openFile'),
+  getTournaments: (): Promise<Tournament[]> => ipcRenderer.invoke('get-tournaments'),
   hello: 'world',
 };
 

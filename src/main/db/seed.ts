@@ -1,9 +1,7 @@
 import db from './';
 
 export const seedDatabase = () => {
-  const count = db
-    .prepare('SELECT COUNT(*) AS count FROM tournaments')
-    .get().count;
+  const count = db.prepare('SELECT COUNT(*) AS count FROM tournaments').get().count;
 
   if (count === 0) {
     const insert = db.prepare(`

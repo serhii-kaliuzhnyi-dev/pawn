@@ -21,9 +21,7 @@ i18n
     saveMissing: true,
     saveMissingTo: 'current',
     missingKeyHandler: (lngs, key, fallbackValue) => {
-      console.warn(
-        `Missing translation for key: "${key}" in languages: ${lngs.join(', ')}`,
-      );
+      console.warn(`Missing translation for key: "${key}" in languages: ${lngs.join(', ')}`);
       return fallbackValue || key; // Show key as fallback
     },
   });

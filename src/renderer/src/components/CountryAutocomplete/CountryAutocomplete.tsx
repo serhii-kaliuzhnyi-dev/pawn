@@ -30,13 +30,7 @@ const CountryAutocomplete = ({
           onChange={(_, value) => field.onChange(value ? value.label : '')}
           value={countries.find((c) => c.label === field.value) || null}
           renderInput={(params) => (
-            <TextField
-              {...params}
-              label={label}
-              error={error}
-              helperText={helperText}
-              required
-            />
+            <TextField {...params} label={label} error={error} helperText={helperText} required />
           )}
           fullWidth
         />

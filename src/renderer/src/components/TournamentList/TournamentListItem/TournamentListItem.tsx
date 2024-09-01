@@ -23,9 +23,7 @@ const TournamentListItem = ({ tournament }: TournamentListItemProps) => {
           <EventIcon fontSize="small" />
           <Typography variant="body2">{tournament.date}</Typography>
           <GroupIcon fontSize="small" />
-          <Typography variant="body2">
-            {tournament.playerCount} players
-          </Typography>
+          <Typography variant="body2">{tournament.playerCount} players</Typography>
           <TimerIcon fontSize="small" />
           <Typography variant="body2">{tournament.timeType}</Typography>
           <PlayArrowIcon fontSize="small" />

@@ -5,18 +5,12 @@ import { useEffect, useState } from 'react';
 import BaseLayout from '../../components/BaseLayout/BaseLayout';
 import TournamentList from '../../components/TournamentList/TournamentList';
 import TournamentSidebar from '../../components/TournamentSidebar/TournamentSidebar';
-import {
-  isDraftTournament,
-  isFinishedTournament,
-  isOngoingTournament,
-} from '../../utils';
+import { isDraftTournament, isFinishedTournament, isOngoingTournament } from '../../utils';
 import { ContainerBox, ContentGrid, SidebarGrid } from './styled';
 
 const TournamentsPage = () => {
   const [tournaments, setTournaments] = useState<Tournament[]>([]);
-  const [filteredTournaments, setFilteredTournaments] = useState<Tournament[]>(
-    [],
-  );
+  const [filteredTournaments, setFilteredTournaments] = useState<Tournament[]>([]);
   const [filter, setFilter] = useState<TournamentStatus>('current');
 
   useEffect(() => {
@@ -50,18 +44,14 @@ const TournamentsPage = () => {
     filterTournaments();
   }, [filter, tournaments]);
 
-  const handleFilterChange = (newFilter: TournamentStatus) =>
-    setFilter(newFilter);
+  const handleFilterChange = (newFilter: TournamentStatus) => setFilter(newFilter);
 
   return (
     <BaseLayout>
       <ContainerBox>
         <Grid container spacing={2}>
           <SidebarGrid size={{ mobile: 12, laptop: 3, desktop: 3 }}>
-            <TournamentSidebar
-              tournaments={tournaments}
-              onFilterChange={handleFilterChange}
-            />
+            <TournamentSidebar tournaments={tournaments} onFilterChange={handleFilterChange} />
           </SidebarGrid>
           <ContentGrid size={{ mobile: 12, laptop: 9, desktop: 9 }}>
             <TournamentList tournaments={filteredTournaments} />
