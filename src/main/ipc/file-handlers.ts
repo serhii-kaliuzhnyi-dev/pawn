@@ -1,4 +1,4 @@
-import { ipcMain, dialog } from 'electron';
+import { dialog, ipcMain } from 'electron';
 
 const registerFileHandlers = () => {
   ipcMain.handle('dialog:openFile', async () => {

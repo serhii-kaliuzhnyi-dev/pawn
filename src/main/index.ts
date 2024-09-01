@@ -1,11 +1,12 @@
 // src/main/main.ts
-import { app, BrowserWindow } from 'electron';
 import { electronApp, optimizer } from '@electron-toolkit/utils';
-import { createMainWindow } from './windows/mainWindow';
-import { createAppMenu } from './menu/menu';
+import { app, BrowserWindow } from 'electron';
+
 import { initializeDatabase } from './db';
 import { seedDatabase } from './db/seed';
 import { registerIpcHandlers } from './ipc';
+import { createAppMenu } from './menu/menu';
+import { createMainWindow } from './windows/mainWindow';
 
 app.whenReady().then(() => {
   electronApp.setAppUserModelId('com.electron');

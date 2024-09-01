@@ -1,29 +1,30 @@
-import { Box, Button, Paper, InputBase, List, Divider } from '@mui/material'
-import AddIcon from '@mui/icons-material/Add'
-import { useTranslation } from 'react-i18next'
-import TournamentStatusButton from './TournamentStatusButton'
-import { Tournament, TournamentStatus } from '@dto/types'
-import { isDraftTournament, isFinishedTournament, isOngoingTournament } from '../../utils'
-import { useNavigate } from 'react-router-dom'
-import { APP_ROUTES } from '../../constants/appRoutes'
+import { Tournament, TournamentStatus } from '@dto/types';
+import AddIcon from '@mui/icons-material/Add';
+import { Box, Button, Divider, InputBase, List, Paper } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+
+import { APP_ROUTES } from '../../constants/appRoutes';
+import { isDraftTournament, isFinishedTournament, isOngoingTournament } from '../../utils';
+import TournamentStatusButton from './TournamentStatusButton';
 
 type TournamentSidebarProps = {
-  tournaments: Tournament[]
-  onFilterChange: (filter: TournamentStatus) => void
-}
+  tournaments: Tournament[];
+  onFilterChange: (filter: TournamentStatus) => void;
+};
 
 const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarProps) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleNewTournament = () => {
     navigate(APP_ROUTES.NEW_TOURNAMENT);
-  }
+  };
 
   // Calculate the counts for each tournament status using utility functions
-  const currentTournamentsCount = tournaments.filter(isOngoingTournament).length
-  const draftTournamentsCount = tournaments.filter(isDraftTournament).length
-  const finishedTournamentsCount = tournaments.filter(isFinishedTournament).length
+  const currentTournamentsCount = tournaments.filter(isOngoingTournament).length;
+  const draftTournamentsCount = tournaments.filter(isDraftTournament).length;
+  const finishedTournamentsCount = tournaments.filter(isFinishedTournament).length;
 
   return (
     <Paper elevation={3} sx={{ width: '100%', padding: 2 }}>
@@ -69,7 +70,7 @@ const TournamentSidebar = ({ tournaments, onFilterChange }: TournamentSidebarPro
         />
       </Box>
     </Paper>
-  )
-}
+  );
+};
 
-export default TournamentSidebar
+export default TournamentSidebar;

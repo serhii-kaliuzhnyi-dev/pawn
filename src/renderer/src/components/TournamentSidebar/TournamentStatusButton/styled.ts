@@ -1,4 +1,4 @@
-import { Button, styled } from '@mui/material'
+import { Button, styled } from '@mui/material';
 
 export const StatusButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
@@ -7,4 +7,4 @@ export const StatusButton = styled(Button)(({ theme }) => ({
   '&:hover': {
     backgroundColor: theme.palette.action.hover
   }
-}))
+}));

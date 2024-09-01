@@ -1,13 +1,13 @@
-import db from './'
+import db from './';
 
 export const seedDatabase = () => {
-  const count = db.prepare('SELECT COUNT(*) AS count FROM tournaments').get().count
+  const count = db.prepare('SELECT COUNT(*) AS count FROM tournaments').get().count;
 
   if (count === 0) {
     const insert = db.prepare(`
       INSERT INTO tournaments (name, location, date, timeType, playerCount, roundsPlayed, totalRounds, countryCode)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `)
+    `);
 
     const tournaments = [
       {
@@ -40,7 +40,7 @@ export const seedDatabase = () => {
         totalRounds: 7,
         countryCode: 'UA'
       }
-    ]
+    ];
 
     tournaments.forEach((tournament) => {
       insert.run(
@@ -52,11 +52,11 @@ export const seedDatabase = () => {
         tournament.roundsPlayed,
         tournament.totalRounds,
         tournament.countryCode
-      )
-    })
+      );
+    });
 
-    console.log('Database seeded with initial data.')
+    console.log('Database seeded with initial data.');
   } else {
-    console.log('Database already seeded.')
+    console.log('Database already seeded.');
   }
-}
+};

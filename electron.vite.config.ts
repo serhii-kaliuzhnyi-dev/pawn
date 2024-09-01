@@ -1,6 +1,6 @@
-import { resolve } from 'path'
-import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
+import { defineConfig, externalizeDepsPlugin } from 'electron-vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   main: {
@@ -16,20 +16,16 @@ export default defineConfig({
       }
     },
     optimizeDeps: {
-      include: [
-        '@emotion/react', 
-        '@emotion/styled', 
-        '@mui/material'
-      ],   
-      force: true 
+      include: ['@emotion/react', '@emotion/styled', '@mui/material'],
+      force: true
     },
-    plugins: [react(
-      {
+    plugins: [
+      react({
         jsxImportSource: '@emotion/react',
         babel: {
-          plugins: ['@emotion/babel-plugin'],
-        },
-      }
-    )]
+          plugins: ['@emotion/babel-plugin']
+        }
+      })
+    ]
   }
-})
+});

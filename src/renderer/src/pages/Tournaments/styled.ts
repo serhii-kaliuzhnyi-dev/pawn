@@ -1,4 +1,4 @@
-import { Box, Grid2, styled } from '@mui/material'
+import { Box, Grid2, styled } from '@mui/material';
 
 export const ContainerBox = styled(Box)(({ theme }) => ({
   maxWidth: '100%',
@@ -11,7 +11,7 @@ export const ContainerBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('desktop')]: {
     padding: theme.spacing(1)
   }
-}))
+}));
 
 export const SidebarGrid = styled(Grid2)(({ theme }) => ({
   width: '100%',
@@ -19,7 +19,7 @@ export const SidebarGrid = styled(Grid2)(({ theme }) => ({
     width: '250px'
   },
   flexShrink: 0
-}))
+}));
 
 export const ContentGrid = styled(Grid2)(({ theme }) => ({
   width: '850px',
@@ -38,4 +38,4 @@ export const ContentGrid = styled(Grid2)(({ theme }) => ({
   [theme.breakpoints.down('mobile')]: {
     width: '100%'
   }
-}))
+}));

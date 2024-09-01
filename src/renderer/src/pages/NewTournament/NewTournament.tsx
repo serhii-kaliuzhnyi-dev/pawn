@@ -1,8 +1,9 @@
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import TournamentForm from '../../components/NewTournamentForm/NewTournamentForm';
+
 import BaseLayout from '../../components/BaseLayout';
 import ImportTournamentsButton from '../../components/ImportTournamentsButton';
+import TournamentForm from '../../components/NewTournamentForm/NewTournamentForm';
 
 const NewTournament = () => {
   return (
@@ -12,7 +13,7 @@ const NewTournament = () => {
           <Grid size={{ mobile: 12, laptop: 8, desktop: 8 }}>
             <TournamentForm />
           </Grid>
-          <Grid 
+          <Grid
             size={{ mobile: 12, laptop: 4, desktop: 4 }}
             sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >

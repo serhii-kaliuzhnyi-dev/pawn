@@ -1,11 +1,12 @@
-import { Box, Typography } from '@mui/material'
-import { StatusButton } from './styled'
+import { Box, Typography } from '@mui/material';
+
+import { StatusButton } from './styled';
 
 type TournamentStatusProps = {
-  label: string
-  count: number
-  onClick: () => void
-}
+  label: string;
+  count: number;
+  onClick: () => void;
+};
 
 const TournamentStatusButton = ({ label, count, onClick }: TournamentStatusProps) => (
   <StatusButton onClick={onClick} fullWidth>
@@ -14,6 +15,6 @@ const TournamentStatusButton = ({ label, count, onClick }: TournamentStatusProps
       <Typography variant="body2">{count}</Typography>
     </Box>
   </StatusButton>
-)
+);
 
-export default TournamentStatusButton
+export default TournamentStatusButton;

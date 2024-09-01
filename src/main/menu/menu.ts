@@ -1,4 +1,4 @@
-import { Menu, MenuItemConstructorOptions, shell, dialog } from 'electron'
+import { dialog, Menu, MenuItemConstructorOptions, shell } from 'electron';
 
 export function createAppMenu() {
   const menuTemplate: MenuItemConstructorOptions[] = [
@@ -18,10 +18,10 @@ export function createAppMenu() {
               const result = await dialog.showOpenDialog(browserWindow, {
                 properties: ['openFile'],
                 filters: [{ name: 'Pawn tournaments', extensions: ['pawn'] }]
-              })
+              });
               if (!result.canceled && result.filePaths.length > 0) {
-                const filePath = result.filePaths[0]
-                console.log('filePath', filePath)
+                const filePath = result.filePaths[0];
+                console.log('filePath', filePath);
                 // Handle the opened file path
               }
             }
@@ -59,13 +59,13 @@ export function createAppMenu() {
         {
           label: 'Learn More',
           click: () => {
-            shell.openExternal('https://your.documentation.link')
+            shell.openExternal('https://your.documentation.link');
           }
         }
       ]
     }
-  ]
+  ];
 
-  const menu = Menu.buildFromTemplate(menuTemplate)
-  Menu.setApplicationMenu(menu)
+  const menu = Menu.buildFromTemplate(menuTemplate);
+  Menu.setApplicationMenu(menu);
 }

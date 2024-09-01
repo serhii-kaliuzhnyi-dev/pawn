@@ -1,9 +1,10 @@
 import { Autocomplete, TextField } from '@mui/material';
-import { Controller, Control } from 'react-hook-form';
+import { Control, Controller, FieldValues } from 'react-hook-form';
+
 import { countries } from './constants';
 
 interface CountryAutocompleteProps {
-  control: Control<any>;
+  control: Control<FieldValues>;
   name: string;
   label: string;
   error?: boolean;
@@ -15,7 +16,7 @@ const CountryAutocomplete = ({
   name,
   label,
   error,
-  helperText,
+  helperText
 }: CountryAutocompleteProps) => {
   return (
     <Controller
@@ -29,13 +30,7 @@ const CountryAutocomplete = ({
           onChange={(_, value) => field.onChange(value ? value.label : '')}
           value={countries.find((c) => c.label === field.value) || null}
           renderInput={(params) => (
-            <TextField
-              {...params}
-              label={label}
-              error={error}
-              helperText={helperText}
-              required
-            />
+            <TextField {...params} label={label} error={error} helperText={helperText} required />
           )}
           fullWidth
         />

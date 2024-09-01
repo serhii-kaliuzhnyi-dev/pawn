@@ -1,23 +1,13 @@
-import {
-  Button,
-  TextField,
-  Typography,
-  Autocomplete,
-  Box,
-  FormGroup,
-} from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useTranslation } from 'react-i18next';
-import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { ButtonContainer, StyledGrid } from './styled';
-import { countries } from '../CountryAutocomplete/constants';
-import {
-  DEFAULT_TOURNAMENT_FORM_VALUES,
-  TOURNAMENT_FORM_SCHEMA,
-} from './validation';
+import { Box, Button, FormGroup, TextField, Typography } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
+import { Controller, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+
 import CountryAutocomplete from '../CountryAutocomplete';
+import { ButtonContainer, StyledGrid } from './styled';
+import { DEFAULT_TOURNAMENT_FORM_VALUES, TOURNAMENT_FORM_SCHEMA } from './validation';
 
 type TournamentFormValues = {
   name: string;
@@ -34,10 +24,10 @@ const TournamentForm = () => {
     control,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<TournamentFormValues>({
     defaultValues: DEFAULT_TOURNAMENT_FORM_VALUES,
-    resolver: yupResolver(TOURNAMENT_FORM_SCHEMA),
+    resolver: yupResolver(TOURNAMENT_FORM_SCHEMA)
   });
 
   const onSubmit = (data: TournamentFormValues) => {
@@ -110,24 +100,24 @@ const TournamentForm = () => {
           </StyledGrid>
           <StyledGrid size={{ mobile: 12, laptop: 12, desktop: 12 }}>
             <ButtonContainer>
-              <Button 
-                type="submit" 
-                variant="contained" 
-                color="primary" 
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
                 sx={{ textTransform: 'none' }} // Prevent text from being uppercase
               >
                 {t('continue')}
               </Button>
-              <Button 
-                variant="outlined" 
+              <Button
+                variant="outlined"
                 sx={{
                   color: 'gray',
                   borderColor: 'gray',
                   textTransform: 'none', // Prevent text from being uppercase
                   '&:hover': {
                     backgroundColor: '#f5f5f5',
-                    borderColor: 'gray',
-                  },
+                    borderColor: 'gray'
+                  }
                 }}
               >
                 {t('cancel')}

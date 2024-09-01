@@ -1,4 +1,5 @@
 import { ipcMain } from 'electron';
+
 import db from '../db';
 
 const registerTournamentHandlers = () => {

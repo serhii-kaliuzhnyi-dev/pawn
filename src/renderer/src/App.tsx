@@ -1,8 +1,9 @@
-import { ReactElement } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { APP_ROUTES } from './constants/appRoutes'
-import TournamentsPage from './pages/Tournaments/Tournaments'
-import NewTournament from './pages/NewTournament/NewTournament'
+import { ReactElement } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import { APP_ROUTES } from './constants/appRoutes';
+import NewTournament from './pages/NewTournament/NewTournament';
+import TournamentsPage from './pages/Tournaments/Tournaments';
 
 function App(): ReactElement {
   return (
@@ -19,7 +20,7 @@ function App(): ReactElement {
         <Route path="*" element={<Navigate to={APP_ROUTES.TOURNAMENTS} />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

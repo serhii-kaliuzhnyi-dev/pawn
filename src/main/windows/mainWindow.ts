@@ -1,7 +1,8 @@
 // src/main/windows/mainWindow.ts
+import { is } from '@electron-toolkit/utils';
 import { BrowserWindow, shell } from 'electron';
 import { join } from 'path';
-import { is } from '@electron-toolkit/utils';
+
 import icon from '../../../resources/icon.png?asset';
 
 export const createMainWindow = (): BrowserWindow => {
@@ -13,8 +14,8 @@ export const createMainWindow = (): BrowserWindow => {
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false,
-    },
+      sandbox: false
+    }
   });
 
   mainWindow.on('ready-to-show', () => {

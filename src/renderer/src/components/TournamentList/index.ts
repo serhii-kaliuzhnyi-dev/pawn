@@ -1,1 +1,1 @@
-export { default } from './TournamentList'
+export { default } from './TournamentList';
