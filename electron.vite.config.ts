@@ -15,10 +15,6 @@ export default defineConfig({
         '@renderer': resolve('src/renderer/src'),
       },
     },
-    optimizeDeps: {
-      include: ['@emotion/react', '@emotion/styled', '@mui/material'],
-      force: true,
-    },
     plugins: [
       react({
         jsxImportSource: '@emotion/react',

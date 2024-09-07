@@ -7,15 +7,8 @@ import { useTranslation } from 'react-i18next';
 
 import CountryAutocomplete from '../CountryAutocomplete';
 import { ButtonContainer, StyledGrid } from './styled';
+import { TournamentFormValues } from './types';
 import { DEFAULT_TOURNAMENT_FORM_VALUES, TOURNAMENT_FORM_SCHEMA } from './validation';
-
-type TournamentFormValues = {
-  name: string;
-  city: string;
-  country: string;
-  startDate: Date | null;
-  endDate: Date | null;
-};
 
 const TournamentForm = () => {
   const { t } = useTranslation();

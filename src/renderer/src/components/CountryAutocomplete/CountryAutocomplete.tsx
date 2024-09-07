@@ -1,10 +1,11 @@
 import { Autocomplete, TextField } from '@mui/material';
-import { Control, Controller, FieldValues } from 'react-hook-form';
+import { Control, Controller } from 'react-hook-form';
 
+import { TournamentFormValues } from '../NewTournamentForm/types';
 import { countries } from './constants';
 
 interface CountryAutocompleteProps {
-  control: Control<FieldValues>;
+  control: Control<TournamentFormValues>;
   name: string;
   label: string;
   error?: boolean;

@@ -1,3 +1,4 @@
+import '@mui/material/styles/styled';
 import './assets/main.css';
 import '@fontsource/roboto';
 import './i18n';
