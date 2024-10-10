@@ -1,4 +1,5 @@
 import { Autocomplete, TextField } from '@mui/material';
+import { ReactNode } from 'react';
 import { Control, Controller } from 'react-hook-form';
 
 import { TournamentFormValues } from '../NewTournamentForm/types';
@@ -9,7 +10,7 @@ interface CountryAutocompleteProps {
   name: string;
   label: string;
   error?: boolean;
-  helperText?: string;
+  helperText?: string | ReactNode;
 }
 
 const CountryAutocomplete = ({
@@ -31,7 +32,7 @@ const CountryAutocomplete = ({
           onChange={(_, value) => field.onChange(value ? value.label : '')}
           value={countries.find((c) => c.label === field.value) || null}
           renderInput={(params) => (
-            <TextField {...params} label={label} error={error} helperText={helperText} required />
+            <TextField {...params} label={label} error={error} helperText={helperText} />
           )}
           fullWidth
         />

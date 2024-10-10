@@ -1,6 +1,14 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import react from '@vitejs/plugin-react';
 import { defineConfig, externalizeDepsPlugin } from 'electron-vite';
-import { resolve } from 'path';
+
+import pkg from './package.json';
+
+const currentFolderPath = fileURLToPath(new URL('.', import.meta.url));
+
+const srcFolderPath = path.resolve(currentFolderPath, 'src');
 
 export default defineConfig({
   main: {
@@ -10,9 +18,13 @@ export default defineConfig({
     plugins: [externalizeDepsPlugin()],
   },
   renderer: {
+    base: '',
+    define: {
+      APP_VERSION: `"${pkg.version}"`,
+    },
     resolve: {
       alias: {
-        '@renderer': resolve('src/renderer/src'),
+        pawn: srcFolderPath,
       },
     },
     plugins: [

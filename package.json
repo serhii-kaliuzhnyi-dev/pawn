@@ -21,6 +21,9 @@
     "build:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux"
   },
+  "engines": {
+    "node": "20"
+  },
   "dependencies": {
     "@ag-grid-community/client-side-row-model": "^32.1.0",
     "@ag-grid-community/core": "^32.1.0",
@@ -36,6 +39,7 @@
     "@fontsource/roboto": "^5.0.14",
     "@hookform/resolvers": "^3.9.0",
     "@mui/icons-material": "^6.0.1",
+    "@mui/lab": "^6.0.0-beta.10",
     "@mui/material": "^6.0.1",
     "@mui/styled-engine-sc": "^6.0.1",
     "@mui/x-date-pickers": "^7.15.0",

@@ -9,9 +9,9 @@ export const DEFAULT_TOURNAMENT_FORM_VALUES = {
 };
 
 export const TOURNAMENT_FORM_SCHEMA = yup.object().shape({
-  name: yup.string().required('Name is required'),
-  city: yup.string().required('City is required'),
-  country: yup.string().required('Country is required'),
-  startDate: yup.date().required('Start date is required').nullable(),
+  name: yup.string().required('Назва турніру є обов\'язковою'),
+  city: yup.string(),
+  country: yup.string(),
+  startDate: yup.date().required('Початок турніру').nullable(),
   endDate: yup.date().required('End date is required').nullable(),
 });

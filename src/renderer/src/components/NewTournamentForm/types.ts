@@ -1,4 +1,4 @@
-import { FieldValues } from "react-hook-form";
+import { FieldValues } from 'react-hook-form';
 
 export interface TournamentFormValues extends FieldValues {
   name: string;
@@ -6,4 +6,5 @@ export interface TournamentFormValues extends FieldValues {
   country: string;
   startDate: Date | null;
   endDate: Date | null;
-};
+  mainReferee: string;
+}
